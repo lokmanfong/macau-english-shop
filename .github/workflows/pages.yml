@@ -25,6 +25,7 @@ jobs:
           mkdir public
           unzip -q /tmp/site.zip -d public
           unzip -oq mobile-audio-fix.zip -d public
+          unzip -oq shop-layout-fix.zip -d public
           touch public/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
