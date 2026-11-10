@@ -1,4 +1,4 @@
-name: Publish English Shop
+name: Publish English Learning App
 on:
   push:
     branches: [main]
@@ -26,6 +26,12 @@ jobs:
           unzip -q /tmp/site.zip -d public
           unzip -oq mobile-audio-fix.zip -d public
           unzip -oq shop-layout-fix.zip -d public
+          cat latest-app.zip.part-* > /tmp/latest-app.zip
+          echo "c7289066b3441768c2125430046512debaf49dcbb454924b108c79d7046644eb  /tmp/latest-app.zip" | sha256sum -c -
+          unzip -oq /tmp/latest-app.zip -d public
+          test -f public/games/runner/index.html
+          test -f public/games/tower/index.html
+          test -f public/unit-grammar.mjs
           touch public/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
